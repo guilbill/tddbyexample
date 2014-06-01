@@ -14,5 +14,7 @@ public class AppTest {
         Dollar five = new Dollar(5);
         five.time(2);
         assertEquals(10,five.amount);
+        five.time(3);
+        assertEquals(15,five.amount);
     }
 }
