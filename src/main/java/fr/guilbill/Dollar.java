@@ -7,19 +7,14 @@ package fr.guilbill;
  * Time: 16:49
  * To change this template use File | Settings | File Templates.
  */
-public class Dollar {
-    private int amount;
+public class Dollar extends Money {
 
     public Dollar(int i) {
-        amount = i;
+        super(i);
     }
 
     public Dollar time(int i) {
         return new Dollar(amount * i);
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        return amount == ((Dollar) obj).amount;
-    }
 }
