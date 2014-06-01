@@ -14,7 +14,7 @@ public class Dollar {
         amount = i;
     }
 
-    public void time(int i) {
-        amount=amount*i;
+    public Dollar time(int i) {
+        return new Dollar(amount * i);
     }
 }
