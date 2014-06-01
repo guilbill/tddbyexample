@@ -14,10 +14,8 @@ public class AppTest {
     @Test
     public void multiplictionTest() {
         Dollar five = new Dollar(5);
-        Dollar result = five.time(2);
-        assertEquals(new Dollar(10), result);
-        result = five.time(3);
-        assertEquals(new Dollar(15), result);
+        assertEquals(new Dollar(10), five.time(2));
+        assertEquals(new Dollar(15), five.time(3));
     }
 
     @Test
