@@ -10,11 +10,11 @@ import static org.junit.Assert.assertEquals;
 public class AppTest {
 
     @Test
-    public void multiplictionTest(){
+    public void multiplictionTest() {
         Dollar five = new Dollar(5);
-        five.time(2);
-        assertEquals(10,five.amount);
-        five.time(3);
-        assertEquals(15,five.amount);
+        Dollar result = five.time(2);
+        assertEquals(10, result.amount);
+        result = five.time(3);
+        assertEquals(15, result.amount);
     }
 }
