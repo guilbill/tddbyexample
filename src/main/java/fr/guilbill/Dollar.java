@@ -8,13 +8,13 @@ package fr.guilbill;
  * To change this template use File | Settings | File Templates.
  */
 public class Dollar {
-    public int amount=10;
+    public int amount;
 
     public Dollar(int i) {
-        //To change body of created methods use File | Settings | File Templates.
+        amount = i;
     }
 
     public void time(int i) {
-        //To change body of created methods use File | Settings | File Templates.
+        amount=amount*i;
     }
 }
