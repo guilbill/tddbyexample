@@ -3,6 +3,7 @@ package fr.guilbill;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Unit test for simple App.
@@ -16,5 +17,10 @@ public class AppTest {
         assertEquals(10, result.amount);
         result = five.time(3);
         assertEquals(15, result.amount);
+    }
+
+    @Test
+    public void equalityTest(){
+        assertTrue(new Dollar(5).equals(new Dollar(5)));
     }
 }
