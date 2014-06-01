@@ -12,10 +12,17 @@ import static org.junit.Assert.assertTrue;
 public class AppTest {
 
     @Test
-    public void multiplictionTest() {
+    public void dollarMultiplictionTest() {
         Dollar five = new Dollar(5);
         assertEquals(new Dollar(10), five.time(2));
         assertEquals(new Dollar(15), five.time(3));
+    }
+
+    @Test
+    public void francMultiplictionTest() {
+        Franc five = new Franc(5);
+        assertEquals(new Franc(10), five.time(2));
+        assertEquals(new Franc(15), five.time(3));
     }
 
     @Test
