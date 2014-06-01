@@ -8,7 +8,7 @@ package fr.guilbill;
  * To change this template use File | Settings | File Templates.
  */
 public class Dollar {
-    public int amount;
+    public int amount=10;
 
     public Dollar(int i) {
         //To change body of created methods use File | Settings | File Templates.
