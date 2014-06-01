@@ -8,7 +8,7 @@ package fr.guilbill;
  * To change this template use File | Settings | File Templates.
  */
 public class Dollar {
-    public int amount;
+    private int amount;
 
     public Dollar(int i) {
         amount = i;
