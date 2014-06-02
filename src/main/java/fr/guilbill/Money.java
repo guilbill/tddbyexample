@@ -11,9 +11,9 @@ public abstract class Money {
     protected int amount;
     protected String currency;
 
-    public Money(int i) {
-        amount = i;
-        this.currency = "CHF";
+    public Money(int amount, String currency) {
+        this.amount = amount;
+        this.currency = currency;
     }
 
     @Override
@@ -24,11 +24,11 @@ public abstract class Money {
     }
 
     public static Money dollar(int i) {
-        return new Dollar(i);
+        return new Dollar(i, "USD");
     }
 
     public static Money franc(int i) {
-        return new Franc(i);
+        return new Franc(i, "CHF");
     }
 
     public abstract Money time(int i);

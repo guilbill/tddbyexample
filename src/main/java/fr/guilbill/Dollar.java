@@ -9,13 +9,12 @@ package fr.guilbill;
  */
 public class Dollar extends Money {
 
-    public Dollar(int i) {
-        super(i);
-        this.currency = "USD";
+    public Dollar(int amount, String currency) {
+        super(amount,currency);
     }
 
-    public Money time(int i) {
-        return new Dollar(amount * i);
+    public Money time(int multiplicator) {
+        return Money.dollar(amount * multiplicator);
     }
 
 }

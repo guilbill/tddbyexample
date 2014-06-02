@@ -9,12 +9,12 @@ package fr.guilbill;
  */
 public class Franc extends Money {
 
-    public Franc(int i) {
-        super(i);
+    public Franc(int amount, String currency) {
+        super(amount,currency);
     }
 
-    public Money time(int i) {
-        return new Franc(amount * i);
+    public Money time(int multiplicator) {
+        return Money.franc(amount * multiplicator);
     }
 
 }
