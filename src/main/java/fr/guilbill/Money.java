@@ -18,8 +18,9 @@ public class Money {
 
     @Override
     public boolean equals(Object obj) {
-        boolean sameAmount = (amount == ((Money) obj).amount);
-        boolean sameCurrency = getClass().equals(obj.getClass());
+        Money money = (Money)obj;
+        boolean sameAmount = (this.amount == money.amount);
+        boolean sameCurrency = (this.currency == money.currency());
         return sameAmount && sameCurrency;
     }
 
@@ -31,10 +32,6 @@ public class Money {
         return new Franc(i, "CHF");
     }
 
-    public Money time(int i) {
-        return null;
-    }
-
     public String currency() {
         return this.currency;
     }
@@ -42,5 +39,9 @@ public class Money {
     @Override
     public String toString() {
         return this.amount + " " + this.currency;
+    }
+
+    public Money time(int multiplier) {
+        return new Money(amount * multiplier, currency);
     }
 }
