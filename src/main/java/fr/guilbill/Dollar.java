@@ -11,6 +11,7 @@ public class Dollar extends Money {
 
     public Dollar(int i) {
         super(i);
+        this.currency = "USD";
     }
 
     public Money time(int i) {

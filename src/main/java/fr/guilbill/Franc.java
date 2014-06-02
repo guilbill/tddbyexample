@@ -7,7 +7,7 @@ package fr.guilbill;
  * Time: 17:57
  * To change this template use File | Settings | File Templates.
  */
-public class Franc extends Money{
+public class Franc extends Money {
 
     public Franc(int i) {
         super(i);
@@ -16,4 +16,5 @@ public class Franc extends Money{
     public Money time(int i) {
         return new Franc(amount * i);
     }
+
 }

@@ -9,9 +9,11 @@ package fr.guilbill;
  */
 public abstract class Money {
     protected int amount;
+    protected String currency;
 
     public Money(int i) {
         amount = i;
+        this.currency = "CHF";
     }
 
     @Override
@@ -30,4 +32,8 @@ public abstract class Money {
     }
 
     public abstract Money time(int i);
+
+    public String currency() {
+        return currency;
+    }
 }
