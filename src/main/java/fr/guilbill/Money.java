@@ -7,7 +7,7 @@ package fr.guilbill;
  * Time: 19:33
  * To change this template use File | Settings | File Templates.
  */
-public class Money {
+public abstract class Money {
     protected int amount;
 
     public Money(int i) {
@@ -20,4 +20,14 @@ public class Money {
         boolean sameCurrency = getClass().equals(obj.getClass());
         return sameAmount && sameCurrency;
     }
+
+    public static Money dollar(int i) {
+        return new Dollar(i);
+    }
+
+    public static Money franc(int i) {
+        return new Franc(i);
+    }
+
+    public abstract Money time(int i);
 }

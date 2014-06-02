@@ -13,8 +13,7 @@ public class Dollar extends Money {
         super(i);
     }
 
-    public Money time(int i) {ls
-            
+    public Money time(int i) {
         return new Dollar(amount * i);
     }
 
