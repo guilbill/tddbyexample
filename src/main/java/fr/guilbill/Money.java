@@ -24,12 +24,12 @@ public class Money {
         return sameAmount && sameCurrency;
     }
 
-    public static Money dollar(int i) {
-        return new Dollar(i, "USD");
+    public static Money dollar(int amount) {
+        return new Money(amount, "USD");
     }
 
-    public static Money franc(int i) {
-        return new Franc(i, "CHF");
+    public static Money franc(int amount) {
+        return new Money(amount, "CHF");
     }
 
     public String currency() {
