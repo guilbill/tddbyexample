@@ -13,8 +13,8 @@ public class Franc extends Money {
         super(amount,currency);
     }
 
-    public Money time(int multiplicator) {
-        return Money.franc(amount * multiplicator);
+    public Money time(int multiplier) {
+        return new Franc(amount * multiplier, "CHF");
     }
 
 }

@@ -7,7 +7,7 @@ package fr.guilbill;
  * Time: 19:33
  * To change this template use File | Settings | File Templates.
  */
-public abstract class Money {
+public class Money {
     protected int amount;
     protected String currency;
 
@@ -31,7 +31,9 @@ public abstract class Money {
         return new Franc(i, "CHF");
     }
 
-    public abstract Money time(int i);
+    public Money time(int i) {
+        return null;
+    }
 
     public String currency() {
         return currency;
