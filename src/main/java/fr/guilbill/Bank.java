@@ -10,6 +10,10 @@ package fr.guilbill;
 public class Bank {
     public static Money evaluate(Expression sum, String currency) {
         if (sum.getClass().equals(Money.class)){
+            if (((Money)sum).currency.equals("CHF") && currency.equals("USD")){
+                ((Money)sum).amount = ((Money)sum).amount/2;
+                ((Money)sum).currency = "USD";
+            }
             return ((Money)sum);
         }
         Money leftOperand = evaluate(sum.leftOperand, currency);
