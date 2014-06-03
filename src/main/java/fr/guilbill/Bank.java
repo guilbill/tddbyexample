@@ -14,6 +14,11 @@ public class Bank {
                 ((Money)sum).amount = ((Money)sum).amount/2;
                 ((Money)sum).currency = "USD";
             }
+            if (((Money)sum).currency.equals("USD") && currency.equals("CHF")){
+                ((Money)sum).amount = ((Money)sum).amount*2;
+                ((Money)sum).currency = "CHF";
+            }
+
             return ((Money)sum);
         }
         Money leftOperand = evaluate(sum.leftOperand, currency);

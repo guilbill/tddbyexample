@@ -58,5 +58,7 @@ public class AppTest {
     public void evalDifferentCurrencies(){
         Expression sum = Money.franc(2);
         assertEquals(Money.dollar(1), Bank.evaluate(sum,"USD"));
+        sum = Money.dollar(1);
+        assertEquals(Money.franc(2), Bank.evaluate(sum,"CHF"));
     }
 }
