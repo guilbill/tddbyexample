@@ -8,7 +8,13 @@ package fr.guilbill;
  * To change this template use File | Settings | File Templates.
  */
 public class Bank {
-    public static Money evaluate(Expression sum, String usd) {
-        return Money.dollar(10);
+    public static Money evaluate(Expression sum, String currency) {
+        if (sum.getClass().equals(Money.class)){
+            return ((Money)sum);
+        }
+        Money leftOperand = evaluate(sum.leftOperand, currency);
+        Money rightOperand = evaluate(sum.rightOperand, currency);
+
+        return new Money(leftOperand.amount+rightOperand.amount,currency);
     }
 }

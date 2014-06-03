@@ -42,8 +42,8 @@ public class AppTest {
     public void testSimpleAddition() {
         Expression sum = Money.dollar(5).plus(Money.dollar(5));
         assertEquals(Money.dollar(10), Bank.evaluate(sum, "USD"));
-//        sum = Money.franc(6).plus(Money.franc(6));
-//        assertEquals(Money.franc(12), Bank.evaluate(sum, "CHF"));
+        sum = Money.franc(6).plus(Money.franc(6));
+        assertEquals(Money.franc(12), Bank.evaluate(sum, "CHF"));
     }
 
     @Test
