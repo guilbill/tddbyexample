@@ -40,10 +40,11 @@ public class AppTest {
 
     @Test
     public void testSimpleAddition() {
+        Bank bank = new Bank();
         Expression sum = Money.dollar(5).plus(Money.dollar(5));
-        assertEquals(Bank.evaluate(sum, "USD"), Money.dollar(10));
+        assertEquals(bank.evaluate(sum, "USD"), Money.dollar(10));
         sum = Money.franc(6).plus(Money.franc(6));
-        assertEquals(Bank.evaluate(sum, "CHF"), Money.franc(12));
+        assertEquals(bank.evaluate(sum, "CHF"), Money.franc(12));
     }
 
     @Test
@@ -56,9 +57,10 @@ public class AppTest {
 
     @Test
     public void evalDifferentCurrencies(){
+        Bank bank = new Bank();
         Expression sum = Money.franc(2);
-        assertEquals(Money.dollar(1), Bank.evaluate(sum,"USD"));
+        assertEquals(Money.dollar(1), bank.evaluate(sum,"USD"));
         sum = Money.dollar(1);
-        assertEquals(Money.franc(2), Bank.evaluate(sum,"CHF"));
+        assertEquals(Money.franc(2), bank.evaluate(sum,"CHF"));
     }
 }

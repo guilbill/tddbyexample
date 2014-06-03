@@ -1,5 +1,8 @@
 package fr.guilbill;
 
+import java.util.HashMap;
+import java.util.Hashtable;
+
 /**
  * Created with IntelliJ IDEA.
  * User: guillaume
@@ -9,10 +12,16 @@ package fr.guilbill;
  */
 public class Bank {
 
-    private static String chfCurrency = "CHF";
-    private static String usdCurrency = "USD";
+    private Hashtable<String, Double> rates;
 
-    public static Money evaluate(Expression sum, String toCurrency) {
+    {
+        rates = new Hashtable<String, Double>() {{
+            put("CHF => USD", 2.0);
+            put("USD => CHF", 0.5);
+        }};
+    }
+
+    public Money evaluate(Expression sum, String toCurrency) {
         if (sum.getClass().equals(Money.class)) {
             String fromCurrency = ((Money) sum).currency;
             convertToCurrency((Money) sum, fromCurrency, toCurrency);
@@ -25,17 +34,12 @@ public class Bank {
         return new Money(leftOperand.amount + rightOperand.amount, toCurrency);
     }
 
-    private static void convertToCurrency(Money sum, String fromCurrency, String toCurrency) {
-        double rate;
-        if (fromCurrency.equals(chfCurrency) && toCurrency.equals(usdCurrency)) {
-            rate = 2;
-            sum.amount = sum.amount / rate;
-            sum.currency = toCurrency;
+    private void convertToCurrency(Money sum, String fromCurrency, String toCurrency) {
+        double rate = 1;
+        if (!(fromCurrency.equals(toCurrency))){
+            rate = rates.get(fromCurrency + " => " + toCurrency);
         }
-        if (fromCurrency.equals(usdCurrency) && toCurrency.equals(chfCurrency)) {
-            rate = 0.5;
-            sum.amount = sum.amount / rate;
-            sum.currency = toCurrency;
-        }
+        sum.amount = sum.amount / rate;
+        sum.currency = toCurrency;
     }
 }
