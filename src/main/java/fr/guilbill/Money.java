@@ -22,7 +22,7 @@ public class Money extends Expression {
     public boolean equals(Object obj) {
         Money money = (Money)obj;
         boolean sameAmount = (this.amount == money.amount);
-        boolean sameCurrency = (this.currency == money.currency());
+        boolean sameCurrency = (this.currency.equals(money.currency()));
         return sameAmount && sameCurrency;
     }
 
@@ -49,5 +49,14 @@ public class Money extends Expression {
 
     public Expression plus(Money moneyToAdd) {
         return new Expression(this,moneyToAdd,"SUM");
+    }
+
+    public void convertToCurrency(String fromCurrency, String toCurrency, Bank bank) {
+        double rate = 1;
+        if (!(fromCurrency.equals(toCurrency))){
+            rate = bank.rate(this.currency, toCurrency);
+        }
+        amount = amount / rate;
+        currency = toCurrency;
     }
 }

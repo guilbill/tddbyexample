@@ -1,6 +1,5 @@
 package fr.guilbill;
 
-import java.util.HashMap;
 import java.util.Hashtable;
 
 /**
@@ -23,10 +22,10 @@ public class Bank {
 
     public Money evaluate(Expression sum, String toCurrency) {
         if (sum.getClass().equals(Money.class)) {
-            String fromCurrency = ((Money) sum).currency;
-            convertToCurrency((Money) sum, fromCurrency, toCurrency);
-
-            return ((Money) sum);
+            Money money = (Money) sum;
+            String fromCurrency = money.currency;
+            money.convertToCurrency(fromCurrency, toCurrency, this);
+            return money;
         }
         Money leftOperand = evaluate(sum.leftOperand, toCurrency);
         Money rightOperand = evaluate(sum.rightOperand, toCurrency);
@@ -34,12 +33,7 @@ public class Bank {
         return new Money(leftOperand.amount + rightOperand.amount, toCurrency);
     }
 
-    private void convertToCurrency(Money sum, String fromCurrency, String toCurrency) {
-        double rate = 1;
-        if (!(fromCurrency.equals(toCurrency))){
-            rate = rates.get(fromCurrency + " => " + toCurrency);
-        }
-        sum.amount = sum.amount / rate;
-        sum.currency = toCurrency;
+    public double rate(String fromCurrency, String toCurrency) {
+        return rates.get(fromCurrency + " => " + toCurrency);
     }
 }
