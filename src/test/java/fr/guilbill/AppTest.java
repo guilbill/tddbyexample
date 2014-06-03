@@ -62,4 +62,9 @@ public class AppTest {
         sum = Money.dollar(1);
         assertEquals(Money.franc(2), sum.evaluate("CHF", bank));
     }
+    @Test
+    public void mixedCurrencyAdditionTest(){
+        Sum sum = Money.dollar(5).plus(Money.franc(10));
+        assertEquals(Money.dollar(10),sum.evaluate("USD",new Bank()));
+    }
 }
