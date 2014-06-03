@@ -7,7 +7,7 @@ package fr.guilbill;
  * Time: 19:33
  * To change this template use File | Settings | File Templates.
  */
-public class Money {
+public class Money extends Expression {
     protected int amount;
     protected String currency;
 
@@ -43,5 +43,9 @@ public class Money {
 
     public Money time(int multiplier) {
         return new Money(amount * multiplier, currency);
+    }
+
+    public Money plus(Money moneyToAdd) {
+        return new Money(amount + moneyToAdd.amount, moneyToAdd.currency);
     }
 }
