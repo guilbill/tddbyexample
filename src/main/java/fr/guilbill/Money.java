@@ -12,8 +12,10 @@ public class Money extends Expression {
     protected String currency;
 
     public Money(int amount, String currency) {
+        super();
         this.amount = amount;
         this.currency = currency;
+
     }
 
     @Override
@@ -45,7 +47,7 @@ public class Money extends Expression {
         return new Money(amount * multiplier, currency);
     }
 
-    public Money plus(Money moneyToAdd) {
-        return new Money(amount + moneyToAdd.amount, moneyToAdd.currency);
+    public Expression plus(Money moneyToAdd) {
+        return new Expression(this,moneyToAdd,"SUM");
     }
 }

@@ -49,8 +49,8 @@ public class AppTest {
     @Test
     public void plusExpressionWellFormed() {
         Expression sum = Money.dollar(5).plus(Money.dollar(6));
-        assertEquals(sum.leftOperand,Money.dollar(5));
-        assertEquals(sum.rightOperand,Money.dollar(6));
-        assertEquals(sum.operation.equals("SUM"));
+        assertEquals(sum.leftOperand, Money.dollar(5));
+        assertEquals(sum.rightOperand, Money.dollar(6));
+        assertEquals(sum.operator, "SUM");
     }
 }
