@@ -8,22 +8,34 @@ package fr.guilbill;
  * To change this template use File | Settings | File Templates.
  */
 public class Bank {
-    public static Money evaluate(Expression sum, String currency) {
-        if (sum.getClass().equals(Money.class)){
-            if (((Money)sum).currency.equals("CHF") && currency.equals("USD")){
-                ((Money)sum).amount = ((Money)sum).amount/2;
-                ((Money)sum).currency = "USD";
-            }
-            if (((Money)sum).currency.equals("USD") && currency.equals("CHF")){
-                ((Money)sum).amount = ((Money)sum).amount*2;
-                ((Money)sum).currency = "CHF";
-            }
 
-            return ((Money)sum);
+    private static String chfCurrency = "CHF";
+    private static String usdCurrency = "USD";
+
+    public static Money evaluate(Expression sum, String toCurrency) {
+        if (sum.getClass().equals(Money.class)) {
+            String fromCurrency = ((Money) sum).currency;
+            convertToCurrency((Money) sum, fromCurrency, toCurrency);
+
+            return ((Money) sum);
         }
-        Money leftOperand = evaluate(sum.leftOperand, currency);
-        Money rightOperand = evaluate(sum.rightOperand, currency);
+        Money leftOperand = evaluate(sum.leftOperand, toCurrency);
+        Money rightOperand = evaluate(sum.rightOperand, toCurrency);
 
-        return new Money(leftOperand.amount+rightOperand.amount,currency);
+        return new Money(leftOperand.amount + rightOperand.amount, toCurrency);
+    }
+
+    private static void convertToCurrency(Money sum, String fromCurrency, String toCurrency) {
+        double rate;
+        if (fromCurrency.equals(chfCurrency) && toCurrency.equals(usdCurrency)) {
+            rate = 2;
+            sum.amount = sum.amount / rate;
+            sum.currency = toCurrency;
+        }
+        if (fromCurrency.equals(usdCurrency) && toCurrency.equals(chfCurrency)) {
+            rate = 0.5;
+            sum.amount = sum.amount / rate;
+            sum.currency = toCurrency;
+        }
     }
 }

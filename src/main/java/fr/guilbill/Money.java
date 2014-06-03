@@ -8,10 +8,10 @@ package fr.guilbill;
  * To change this template use File | Settings | File Templates.
  */
 public class Money extends Expression {
-    protected int amount;
+    protected double amount;
     protected String currency;
 
-    public Money(int amount, String currency) {
+    public Money(double amount, String currency) {
         super();
         this.amount = amount;
         this.currency = currency;
