@@ -47,10 +47,6 @@ public class Money implements Expression {
         return new Money(amount * multiplier, currency);
     }
 
-    public Sum plus(Money moneyToAdd) {
-        return new Sum(moneyToAdd, this);
-    }
-
     public Money evaluate(String toCurrency, Bank bank) {
         double rate = 1;
         if (!(this.currency.equals(toCurrency))) {

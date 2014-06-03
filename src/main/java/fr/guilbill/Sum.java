@@ -12,7 +12,7 @@ public class Sum implements Expression{
     public Expression leftOperand;
     public Expression rightOperand;
 
-    public Sum(Expression rightOperand, Expression leftOperand) {
+    public Sum(Expression leftOperand, Expression rightOperand) {
         this.rightOperand = rightOperand;
         this.leftOperand = leftOperand;
     }
