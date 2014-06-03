@@ -42,25 +42,24 @@ public class AppTest {
     public void testSimpleAddition() {
         Bank bank = new Bank();
         Expression sum = Money.dollar(5).plus(Money.dollar(5));
-        assertEquals(bank.evaluate(sum, "USD"), Money.dollar(10));
+        assertEquals(sum.evaluate("USD", bank), Money.dollar(10));
         sum = Money.franc(6).plus(Money.franc(6));
-        assertEquals(bank.evaluate(sum, "CHF"), Money.franc(12));
+        assertEquals(sum.evaluate("CHF", bank), Money.franc(12));
     }
 
     @Test
     public void plusExpressionWellFormed() {
-        Expression sum = Money.dollar(5).plus(Money.dollar(6));
+        Sum sum = Money.dollar(5).plus(Money.dollar(6));
         assertEquals(Money.dollar(5), sum.leftOperand);
         assertEquals(Money.dollar(6), sum.rightOperand);
-        assertEquals("SUM", sum.operator);
     }
 
     @Test
     public void evalDifferentCurrencies(){
         Bank bank = new Bank();
         Expression sum = Money.franc(2);
-        assertEquals(Money.dollar(1), bank.evaluate(sum,"USD"));
+        assertEquals(Money.dollar(1), sum.evaluate("USD", bank));
         sum = Money.dollar(1);
-        assertEquals(Money.franc(2), bank.evaluate(sum,"CHF"));
+        assertEquals(Money.franc(2), sum.evaluate("CHF", bank));
     }
 }

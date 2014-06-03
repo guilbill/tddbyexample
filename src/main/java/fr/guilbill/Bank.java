@@ -20,19 +20,6 @@ public class Bank {
         }};
     }
 
-    public Money evaluate(Expression sum, String toCurrency) {
-        if (sum.getClass().equals(Money.class)) {
-            Money money = (Money) sum;
-            String fromCurrency = money.currency;
-            money.convertToCurrency(fromCurrency, toCurrency, this);
-            return money;
-        }
-        Money leftOperand = evaluate(sum.leftOperand, toCurrency);
-        Money rightOperand = evaluate(sum.rightOperand, toCurrency);
-
-        return new Money(leftOperand.amount + rightOperand.amount, toCurrency);
-    }
-
     public double rate(String fromCurrency, String toCurrency) {
         return rates.get(fromCurrency + " => " + toCurrency);
     }

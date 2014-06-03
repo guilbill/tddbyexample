@@ -7,7 +7,7 @@ package fr.guilbill;
  * Time: 19:33
  * To change this template use File | Settings | File Templates.
  */
-public class Money extends Expression {
+public class Money implements Expression {
     protected double amount;
     protected String currency;
 
@@ -20,7 +20,7 @@ public class Money extends Expression {
 
     @Override
     public boolean equals(Object obj) {
-        Money money = (Money)obj;
+        Money money = (Money) obj;
         boolean sameAmount = (this.amount == money.amount);
         boolean sameCurrency = (this.currency.equals(money.currency()));
         return sameAmount && sameCurrency;
@@ -47,16 +47,17 @@ public class Money extends Expression {
         return new Money(amount * multiplier, currency);
     }
 
-    public Expression plus(Money moneyToAdd) {
-        return new Expression(this,moneyToAdd,"SUM");
+    public Sum plus(Money moneyToAdd) {
+        return new Sum(moneyToAdd, this);
     }
 
-    public void convertToCurrency(String fromCurrency, String toCurrency, Bank bank) {
+    public Money evaluate(String toCurrency, Bank bank) {
         double rate = 1;
-        if (!(fromCurrency.equals(toCurrency))){
+        if (!(this.currency.equals(toCurrency))) {
             rate = bank.rate(this.currency, toCurrency);
         }
         amount = amount / rate;
         currency = toCurrency;
+        return this;
     }
 }
